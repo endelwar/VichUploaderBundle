@@ -4,9 +4,21 @@ parameters:
         - src
         - tests
     treatPhpDocTypesAsCertain: false
+#    reportUnmatchedIgnoredErrors: false
+    excludePaths:
+        - tests/TestCase.php
+        - tests/Functional/WebTestCase.php
+        - tests/EventListener/Doctrine/ListenerTestCase.php
     ignoreErrors:
         - identifier: missingType.iterableValue
         - identifier: missingType.generics
+        -
+            identifier: property.unresolvableNativeType
+            path: tests/*
+        -
+            identifier: method.unresolvableReturnType
+            path: tests/*
 
 includes:
     - phpstan-baseline.neon
+    - vendor/phpstan/phpstan-phpunit/extension.neon

@@ -16,6 +16,7 @@ final class PHPCRAdapter implements AdapterInterface
     {
         $object = $event->getObject();
 
+        /** @var \Doctrine\ODM\PHPCR\DocumentManagerInterface $objectManager */
         $objectManager = $event->getObjectManager();
         $uow = $objectManager->getUnitOfWork();
         $uow->computeSingleDocumentChangeSet($object);

@@ -25,6 +25,7 @@ final class Configuration implements ConfigurationInterface
     {
         $builder = new TreeBuilder('vich_uploader');
         $root = $builder->getRootNode();
+        \assert($root instanceof ArrayNodeDefinition);
         $this->addGeneralSection($root);
         $this->addMetadataSection($root);
         $this->addMappingsSection($root);

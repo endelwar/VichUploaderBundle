@@ -13,7 +13,7 @@ use Vich\UploaderBundle\Mapping\PropertyMapping;
  */
 final class FileSystemStorage extends AbstractStorage
 {
-    protected function doUpload(PropertyMapping $mapping, File $file, ?string $dir, string $name): ?File
+    protected function doUpload(PropertyMapping $mapping, File $file, ?string $dir, string $name): File
     {
         $uploadDir = $mapping->getUploadDestination().\DIRECTORY_SEPARATOR.$dir;
 

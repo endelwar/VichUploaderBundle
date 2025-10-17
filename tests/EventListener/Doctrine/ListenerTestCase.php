@@ -24,15 +24,15 @@ abstract class ListenerTestCase extends TestCase
 
     public static bool $usePreUpdateEventArgs = false;
 
-    protected AdapterInterface|MockObject $adapter;
+    protected MockObject|AdapterInterface $adapter;
 
-    protected MetadataReader|MockObject $metadata;
+    protected MockObject|MetadataReader $metadata;
 
-    protected UploadHandler|MockObject $handler;
+    protected MockObject|UploadHandler $handler;
 
-    protected LifecycleEventArgs|MockObject $event;
+    protected MockObject|LifecycleEventArgs $event;
 
-    public DummyEntity|MockObject $object;
+    public MockObject|DummyEntity $object;
 
     /** @var T */
     protected BaseListener $listener;
@@ -50,38 +50,26 @@ abstract class ListenerTestCase extends TestCase
         $this->event->method('getObject')->willReturn($this->object);
     }
 
-    /**
-     * @return AdapterInterface&MockObject
-     */
-    protected function getAdapterMock(): AdapterInterface
+    protected function getAdapterMock(): MockObject|AdapterInterface
     {
         return $this->createMock(AdapterInterface::class);
     }
 
-    /**
-     * @return MetadataReader&MockObject
-     */
-    protected function getMetadataReaderMock(): MetadataReader
+    protected function getMetadataReaderMock(): MockObject&MetadataReader
     {
         return $this->getMockBuilder(MetadataReader::class)
             ->disableOriginalConstructor()
             ->getMock();
     }
 
-    /**
-     * @return UploadHandler&MockObject
-     */
-    protected function getHandlerMock(): UploadHandler
+    protected function getHandlerMock(): MockObject&UploadHandler
     {
         return $this->getMockBuilder(UploadHandler::class)
             ->disableOriginalConstructor()
             ->getMock();
     }
 
-    /**
-     * @return LifecycleEventArgs&MockObject
-     */
-    protected function getEventMock(): LifecycleEventArgs
+    protected function getEventMock(): MockObject&LifecycleEventArgs
     {
         return $this->getMockBuilder(LifecycleEventArgs::class)
             ->disableOriginalConstructor()

@@ -35,12 +35,15 @@ final class GaufretteStorage extends AbstractStorage
 
         $filesystem->write($path, \file_get_contents($file->getPathname()), true);
 
-        if ($filesystem->getAdapter() instanceof MetadataSupporter) {
-            $filesystem->getAdapter()->setMetadata($path, ['contentType' => $file->getMimeType()]);
+        if (\method_exists($filesystem, 'getAdapter')) {
+            $adapter = $filesystem->getAdapter();
+            if ($adapter instanceof MetadataSupporter) {
+                $adapter->setMetadata($path, ['contentType' => $file->getMimeType()]);
+            }
         }
     }
 
-    protected function doRemove(PropertyMapping $mapping, ?string $dir, string $name): ?bool
+    protected function doRemove(PropertyMapping $mapping, ?string $dir, string $name): bool
     {
         $filesystem = $this->getFilesystem($mapping);
         $path = (\is_string($dir) && '' !== $dir) ? $dir.'/'.$name : $name;

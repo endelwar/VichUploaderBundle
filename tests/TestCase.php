@@ -15,26 +15,26 @@ use Vich\UploaderBundle\Util\Transliterator;
 
 abstract class TestCase extends BaseTestCase
 {
-    protected function getUploadedFileMock(): UploadedFile|MockObject
+    protected function getUploadedFileMock(): MockObject&UploadedFile
     {
         return $this->getMockBuilder(UploadedFile::class)
             ->setConstructorArgs(['lala', 'lala', null, 9, true])
             ->getMock();
     }
 
-    protected function getReplacingFileMock(): ReplacingFile|MockObject
+    protected function getReplacingFileMock(): MockObject&ReplacingFile
     {
         return $this->getMockBuilder(ReplacingFile::class)
             ->setConstructorArgs(['lala', false])
             ->getMock();
     }
 
-    protected function getPropertyMappingMock(): PropertyMapping|MockObject
+    protected function getPropertyMappingMock(): MockObject&PropertyMapping
     {
         return $this->createMock(PropertyMapping::class);
     }
 
-    protected function getPropertyMappingFactoryMock(): PropertyMappingFactory|MockObject
+    protected function getPropertyMappingFactoryMock(): MockObject&PropertyMappingFactory
     {
         return $this->createMock(PropertyMappingFactory::class);
     }
@@ -44,12 +44,12 @@ abstract class TestCase extends BaseTestCase
         return new Transliterator(new AsciiSlugger());
     }
 
-    protected function getMetadataReaderMock(): MetadataReader|MockObject
+    protected function getMetadataReaderMock(): MockObject&MetadataReader
     {
         return $this->createMock(MetadataReader::class);
     }
 
-    protected function getUploadHandlerMock(): UploadHandler|MockObject
+    protected function getUploadHandlerMock(): MockObject&UploadHandler
     {
         return $this->createMock(UploadHandler::class);
     }

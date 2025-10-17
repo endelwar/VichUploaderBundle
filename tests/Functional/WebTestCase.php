@@ -71,7 +71,7 @@ abstract class WebTestCase extends BaseWebTestCase
         }
     }
 
-    protected function mockMetadataReader(): MetadataReader|MockObject
+    protected function mockMetadataReader(): MockObject&MetadataReader
     {
         return $this->createMock(MetadataReader::class);
     }

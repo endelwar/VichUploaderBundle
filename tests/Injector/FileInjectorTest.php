@@ -15,7 +15,7 @@ use Vich\UploaderBundle\Tests\TestCase;
  */
 final class FileInjectorTest extends TestCase
 {
-    protected GaufretteStorage|MockObject $storage;
+    protected MockObject&GaufretteStorage $storage;
 
     protected function setUp(): void
     {
